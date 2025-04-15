@@ -63,4 +63,10 @@ public class UserService {
         users.remove(id);
         System.out.println("User deleted successfully");
     }
+    
+    // New count method
+    public int getUserCount() {
+        System.out.println("Getting user count");
+        return users.size();
+    }
 }
