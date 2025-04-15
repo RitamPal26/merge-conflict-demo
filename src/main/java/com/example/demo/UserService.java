@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class UserService {
     private Map<String, User> users = new HashMap<>();
@@ -64,9 +65,17 @@ public class UserService {
         System.out.println("User deleted successfully");
     }
     
-    // New count method
+    // New count method (from main branch)
     public int getUserCount() {
         System.out.println("Getting user count");
         return users.size();
+    }
+    
+    // New search method (from feature-search branch)
+    public List<User> searchUsersByName(String namePattern) {
+        System.out.println("Searching users with name pattern: " + namePattern);
+        return users.values().stream()
+                .filter(user -> user.getName().toLowerCase().contains(namePattern.toLowerCase()))
+                .collect(Collectors.toList());
     }
 }
